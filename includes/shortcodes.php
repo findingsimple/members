@@ -47,7 +47,7 @@ function members_is_user_logged_in_shortcode( $attr, $content = null ) {
 
 	/* If it is a feed or the user is not logged in, return nothing. */
 	if ( is_feed() || !is_user_logged_in() || is_null( $content ) )
-		return '';
+		return members_get_post_error_message( get_the_ID() );
 
 	/* Return the content. */
 	return do_shortcode( $content );
@@ -128,7 +128,7 @@ function members_access_check_shortcode( $attr, $content = null ) {
 	}
 
 	/* Return an empty string if we've made it to this point. */
-	return '';
+	return members_get_post_error_message( get_the_ID() );
 }
 
 /**
